@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>I'm Sorry Baby 💔</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background: #fff0f5;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    h1 {
+      color: #ff69b4;
+      margin-top: 30px;
+    }
+
+    #gif {
+      margin: 20px auto;
+    }
+
+    #message {
+      font-size: 24px;
+      color: #d63384;
+      margin: 20px;
+      min-height: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .button-container {
+      position: relative;
+      height: 300px;
+      margin-top: 30px;
+    }
+
+    #yesBtn, #noBtn {
+      position: absolute;
+      width: 120px;
+      height: 50px;
+      border: none;
+      border-radius: 25px;
+      font-size: 18px;
+      cursor: pointer;
+      color: white;
+    }
+
+    #yesBtn {
+      background-color: #ff69b4;
+      left: 40%;
+      top: 200px;
+    }
+
+    #noBtn {
+      background-color: #ff4d4d;
+      left: 55%;
+      top: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      #yesBtn, #noBtn {
+        left: 30% !important;
+      }
+    }
+  </style>
+  <script>
+    let flag = 1;
+    let messageIndex = 0;
+    const messages = [
+      "I'm really sorry 😢, Click yes Again",
+      "Please forgive me 🥺, Click yes Again",
+      "I love you so much ❤️, Click yes Again",
+      "You're my everything ❤️, Click yes Again",
+      "I’ll do better, I promise 💞, Click yes Again",
+      "I never want to hurt you again 💗, Click yes Again",
+      "You make my world brighter 🌸, Click yes Again",
+      "I love you so much💕"
+    ];
+
+    function f1() {
+      const msg = document.getElementById("message");
+      msg.innerText = messages[messageIndex];
+      messageIndex = (messageIndex + 1) % messages.length;
+    }
+
+    function f() {
+      const noBtn = document.getElementById("noBtn");
+
+      if (flag === 1) {
+        noBtn.style.top = "100px";
+        noBtn.style.left = "20%";
+        flag = 2;
+      } else if (flag === 2) {
+        noBtn.style.top = "150px";
+        noBtn.style.left = "65%";
+        flag = 3;
+      } else {
+        noBtn.style.top = "200px";
+        noBtn.style.left = "30%";
+        flag = 1;
+      }
+    }
+
+    // Start music after interaction
+    window.addEventListener('click', () => {
+      const audio = document.getElementById("bgMusic");
+      audio.play();
+    }, { once: true });
+  </script>
+</head>
+<body>
+  <h1>Baby... I'm really sorry 💔</h1>
+
+  <div id="gif">
+    <img src="sunflower-57.gif" alt="Sorry Baby GIF" height="200">
+  </div>
+
+  <h1>Will you forgive me? 🥺</h1>
+
+  <div id="message"></div>
+
+  <div class="button-container">
+    <button id="yesBtn" onclick="f1()">YES 💖</button>
+    <button id="noBtn" onmouseover="f()">NO 😭</button>
+  </div>
+
+  <!-- Background Music -->
+    <audio id="bgMusic" loop preload="auto" volume="0.3">
+        <source src="I Wanna Be Yours-yt.savetube.me.mp3" type="audio/mp3">
+    </audio>
+
+</body>
+</html>
